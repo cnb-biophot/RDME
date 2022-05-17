@@ -1,0 +1,34 @@
+// Monte Carlo 3D simulations of mesoscopic reaction-diffusion kinetics 
+// Model interaction between A and V to produce AV 
+// A+V   <==> A1V
+// A+A1V <==> A2V
+// last modification : may 1 2022 LV lupevillegaslopez@gmail.com
+// The program outputs 3 files with the positions of all the particles at each event time 
+// "particlestimeEvolution.txt":           total number of particles of each specie:  t-A-V-A1V-A2V-...AmV
+// "timeParticlest.txt":                   the particle in a diffusion event at time t  : "particle-t-x-y-z-especie"
+// "timeEvolutionC.txt":                   the particle in a reaction event at time t  : "t-x-y-z-V-A-VA-reaction"
+
+1. You need: mainRDME.c, parameters.txt, ran2.h
+ >> make
+ >> ./rdme
+2. If you are using moore:
+   mainRDME.c, rdme.sh, parameters.txt, ran2.h, rdme.sh
+ >> make
+ >> qsub rdme.sh
+
+Parameters:
+-Total Number of particles of type A (Fab-free)
+-Total Number of particles of type V (LUV-free) 
+-Diffusion constant of A, (um2/s)
+-Diffusion constant of V, A1V, A2V, A3V...A10V (um2/s)
+-Radius of A/Fab (nm)
+-Radius of V/LUV (nm)
+-Number of reactions 
+-Simulation volume size (um, Ex:5um)
+-Number of subvolumenes ( Ex: 10 subvolumenes, subvolumen size =5/10 = 0.5um)  
+-kon [s-1M-1]
+-koff[s-1]
+-Total number of iterations
+-Number of iteration to write results
+
+3. The example is using 750 molecules, 200 reactions, kon=1e9, koff=0.5
